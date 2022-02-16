@@ -18,6 +18,5 @@ extension ViewCode {
         setupViewHierarchy()
         setupConstraints()
         configureViews()
-        setupView()
     }
 }
