@@ -8,7 +8,10 @@
 import UIKit
 
 final class CreateTaskViewController: UIViewController {
-    override func viewDidLoad() {
-        view.backgroundColor = .blue
+    
+    lazy var createView: CreateTaskView = .init()
+    
+    override func loadView() {
+        view = createView
     }
 }
