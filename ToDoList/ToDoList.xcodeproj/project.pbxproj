@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E29F80FB27BDBCC2004F4AAB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29F80FA27BDBCC2004F4AAB /* Task.swift */; };
 		E2C48C8727BC6665001E8916 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C48C8627BC6665001E8916 /* AppDelegate.swift */; };
 		E2C48C8E27BC6666001E8916 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2C48C8C27BC6666001E8916 /* Main.storyboard */; };
 		E2C48C9027BC668D001E8916 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2C48C8F27BC668D001E8916 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E29F80FA27BDBCC2004F4AAB /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		E2C48C8327BC6665001E8916 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C48C8627BC6665001E8916 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2C48C8D27BC6666001E8916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E29F80F927BDBC6A004F4AAB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E29F80FA27BDBCC2004F4AAB /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E2C48C7A27BC6665001E8916 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +148,7 @@
 		E2C48CB627BC6C97001E8916 /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
+				E29F80F927BDBC6A004F4AAB /* Model */,
 				E2C48CBB27BC6F69001E8916 /* View */,
 				E2C48CB827BC6CC8001E8916 /* Controller */,
 			);
@@ -328,6 +339,7 @@
 				E2C48CBD27BC6F87001E8916 /* TaskListView.swift in Sources */,
 				E2C48CC627BC82DE001E8916 /* CreateTaskView.swift in Sources */,
 				E2C48CC027BC7366001E8916 /* ViewCode.swift in Sources */,
+				E29F80FB27BDBCC2004F4AAB /* Task.swift in Sources */,
 				E2C48CC427BC80BD001E8916 /* CreateTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

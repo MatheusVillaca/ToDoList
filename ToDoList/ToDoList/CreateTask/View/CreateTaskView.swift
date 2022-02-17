@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CreateTaskViewDelegate {
+    func createTask(title: String, description: String)
+}
+
 final class CreateTaskView: UIView, ViewCode {
     
     let titleTextField: UITextField = {
@@ -30,10 +34,14 @@ final class CreateTaskView: UIView, ViewCode {
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
         confirmButton.setTitle("CONFIRMAR", for: .normal)
         confirmButton.backgroundColor = .systemBlue
+        confirmButton.addTarget(self, action: #selector(buttonActionTask), for: .touchUpInside)
         return confirmButton
     } ()
     
-    init() {
+    var delegate: CreateTaskViewDelegate
+    
+    init(delegate: CreateTaskViewDelegate) {
+        self.delegate = delegate
         super.init(frame: .zero)
         setupView()
     }
@@ -66,5 +74,8 @@ final class CreateTaskView: UIView, ViewCode {
     
     func configureViews() {
         backgroundColor = .white
+    }
+    @objc func buttonActionTask() {
+        delegate.createTask(title: titleTextField.text ?? "", description: descriptionTextView.text)
     }
 }

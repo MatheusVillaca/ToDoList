@@ -9,7 +9,16 @@ import UIKit
 
 final class CreateTaskViewController: UIViewController {
     
-    lazy var createView: CreateTaskView = .init()
+    var createView: CreateTaskView
+    
+    init(delegate: CreateTaskViewDelegate) {
+        createView = .init(delegate: delegate)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         view = createView

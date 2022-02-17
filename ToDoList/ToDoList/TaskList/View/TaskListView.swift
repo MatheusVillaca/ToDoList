@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TaskListView: UIView, UITableViewDataSource, ViewCode {
+final class TaskListView: UIView, ViewCode {
     
     let addButton: UIButton = {
         let addButton: UIButton = UIButton (frame: .zero)
@@ -20,30 +20,24 @@ final class TaskListView: UIView, UITableViewDataSource, ViewCode {
     
     lazy var tableView: UITableView = {
         let tableView: UITableView = UITableView (frame: .zero)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "taskCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.dataSource = self
         return tableView
     }()
     
     let addAction: (() -> Void)
     
-    init(addAction: @escaping (() -> Void)){
+    init(dataSource: UITableViewDataSource, addAction: @escaping (() -> Void)){
         self.addAction = addAction
         super.init(frame: .zero)
+        tableView.dataSource = dataSource
         setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
+  
     
     func setupViewHierarchy() {
         addSubview(addButton)
