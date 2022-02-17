@@ -13,6 +13,8 @@ final class TaskListView: UIView, ViewCode {
         let addButton: UIButton = UIButton (frame: .zero)
         addButton.translatesAutoresizingMaskIntoConstraints = false
         addButton.setTitle("Adicionar Tarefa", for: .normal)
+        addButton.layer.borderWidth = 0.5
+        addButton.layer.cornerRadius = 5
         addButton.backgroundColor = .systemBlue
         addButton.addTarget(self, action: #selector(addTaskAction), for: .touchUpInside)
         return addButton
@@ -20,7 +22,7 @@ final class TaskListView: UIView, ViewCode {
     
     lazy var tableView: UITableView = {
         let tableView: UITableView = UITableView (frame: .zero)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "taskCell")
+        tableView.register(TaskListViewCell.self, forCellReuseIdentifier: "taskCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -33,12 +35,7 @@ final class TaskListView: UIView, ViewCode {
         tableView.dataSource = dataSource
         setupView()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
   
-    
     func setupViewHierarchy() {
         addSubview(addButton)
         addSubview(tableView)
@@ -62,6 +59,10 @@ final class TaskListView: UIView, ViewCode {
     
     @objc func addTaskAction() {
         addAction()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }

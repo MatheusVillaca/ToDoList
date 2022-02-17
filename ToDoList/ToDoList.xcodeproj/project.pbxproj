@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E251CADF27BE880500BFA411 /* TaskListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E251CADE27BE880500BFA411 /* TaskListViewCell.swift */; };
 		E29F80FB27BDBCC2004F4AAB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29F80FA27BDBCC2004F4AAB /* Task.swift */; };
 		E2C48C8727BC6665001E8916 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C48C8627BC6665001E8916 /* AppDelegate.swift */; };
 		E2C48C8E27BC6666001E8916 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2C48C8C27BC6666001E8916 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E251CADE27BE880500BFA411 /* TaskListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewCell.swift; sourceTree = "<group>"; };
 		E29F80FA27BDBCC2004F4AAB /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		E2C48C8327BC6665001E8916 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C48C8627BC6665001E8916 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				E2C48CBC27BC6F87001E8916 /* TaskListView.swift */,
+				E251CADE27BE880500BFA411 /* TaskListViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				E2C48C8727BC6665001E8916 /* AppDelegate.swift in Sources */,
 				E2C48CBA27BC6CE0001E8916 /* TasksListViewController.swift in Sources */,
 				E2C48CBD27BC6F87001E8916 /* TaskListView.swift in Sources */,
+				E251CADF27BE880500BFA411 /* TaskListViewCell.swift in Sources */,
 				E2C48CC627BC82DE001E8916 /* CreateTaskView.swift in Sources */,
 				E2C48CC027BC7366001E8916 /* ViewCode.swift in Sources */,
 				E29F80FB27BDBCC2004F4AAB /* Task.swift in Sources */,
