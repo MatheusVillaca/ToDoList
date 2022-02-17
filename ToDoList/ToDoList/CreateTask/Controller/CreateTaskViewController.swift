@@ -11,6 +11,10 @@ final class CreateTaskViewController: UIViewController {
     
     var createView: CreateTaskView
     
+    override func loadView() {
+        view = createView
+    }
+    
     init(delegate: CreateTaskViewDelegate) {
         createView = .init(delegate: delegate)
         super.init(nibName: nil, bundle: nil)
@@ -20,7 +24,4 @@ final class CreateTaskViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func loadView() {
-        view = createView
-    }
 }

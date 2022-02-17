@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Task {
+final class Task: Codable {
     
     let title: String
     let description: String

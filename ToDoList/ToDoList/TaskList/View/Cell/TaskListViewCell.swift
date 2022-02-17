@@ -9,11 +9,16 @@ import UIKit
 
 final class TaskListViewCell: UITableViewCell, ViewCode {
     
+    var isCollapsed: Bool = true {
+        didSet {
+            descriptionTaskLabel.numberOfLines = isCollapsed ? 1 : 0
+        }
+    }
+    
     var titleTaskLabel: UILabel = {
         let titleTaskLabel: UILabel = UILabel(frame: .zero)
         titleTaskLabel.font = titleTaskLabel.font.withSize(20)
         titleTaskLabel.textColor = .black
-        titleTaskLabel.textAlignment = .center
         titleTaskLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleTaskLabel
     } ()
@@ -22,7 +27,7 @@ final class TaskListViewCell: UITableViewCell, ViewCode {
         let descriptionTaskLabel: UILabel = UILabel(frame: .zero)
         descriptionTaskLabel.font = descriptionTaskLabel.font.withSize(15)
         descriptionTaskLabel.textColor = .black
-        descriptionTaskLabel.numberOfLines = 0
+        descriptionTaskLabel.numberOfLines = 1
         descriptionTaskLabel.translatesAutoresizingMaskIntoConstraints = false
         return descriptionTaskLabel
     } ()
@@ -31,6 +36,7 @@ final class TaskListViewCell: UITableViewCell, ViewCode {
         let stackView: UIStackView = UIStackView(frame: .zero)
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
+        stackView.alignment = .leading
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     } ()
@@ -57,6 +63,10 @@ final class TaskListViewCell: UITableViewCell, ViewCode {
     
     func configureViews() {
         backgroundColor = .white
+    }
+    
+    func toggle() {
+        isCollapsed = !isCollapsed
     }
     
 }

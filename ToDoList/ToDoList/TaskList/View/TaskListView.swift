@@ -29,10 +29,11 @@ final class TaskListView: UIView, ViewCode {
     
     let addAction: (() -> Void)
     
-    init(dataSource: UITableViewDataSource, addAction: @escaping (() -> Void)){
+    init(tableViewDelegate: UITableViewDelegate, dataSource: UITableViewDataSource, addAction: @escaping (() -> Void)){
         self.addAction = addAction
         super.init(frame: .zero)
         tableView.dataSource = dataSource
+        tableView.delegate = tableViewDelegate
         setupView()
     }
   

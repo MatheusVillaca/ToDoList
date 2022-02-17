@@ -7,22 +7,25 @@
 
 import UIKit
 
-final class TasksListViewController: UIViewController, UITableViewDataSource, CreateTaskViewDelegate {
+final class TasksListViewController: UIViewController, UITableViewDataSource, CreateTaskViewDelegate, UITableViewDelegate {
     
-    let defaults = UserDefaults.standard
     var tasks: [Task] = []
     
-    lazy var listView: TaskListView = .init(dataSource: self, addAction: {
+    init(savedTasks: [Task]) {
+        self.tasks = savedTasks
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    lazy var listView: TaskListView = .init(tableViewDelegate: self, dataSource: self, addAction: {
         self.presentAddTaskScreen()
     })
     
     override func loadView() {
         view = listView
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        defaults.array(forKey: "savedTasks")
-        listView.tableView.reloadData()
     }
     
     func presentAddTaskScreen() {
@@ -31,13 +34,9 @@ final class TasksListViewController: UIViewController, UITableViewDataSource, Cr
     
     func createTask(title: String?, description: String) {
         let task: Task = .init(title: title ?? "", description: description)
-        presentedViewController?.dismiss(animated: true, completion: nil)
         tasks.append(task)
+        presentedViewController?.dismiss(animated: true, completion: nil)
         listView.tableView.reloadData()
-    }
-    
-    func valueDefaults() {
-        defaults.set(tasks, forKey: "savedTasks")
     }
     
     // MARK: - UITableViewDataSource
@@ -53,6 +52,13 @@ final class TasksListViewController: UIViewController, UITableViewDataSource, Cr
 //        cell.accessoryType = .disclosureIndicator
         cell.setupCell(titleTask: task.title, descriptionTask: task.description )
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell: TaskListViewCell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as? TaskListViewCell else {
+            return
+        }
+        cell.toggle()
     }
 }
 
