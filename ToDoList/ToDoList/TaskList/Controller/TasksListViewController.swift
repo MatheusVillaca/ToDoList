@@ -54,6 +54,7 @@ final class TasksListViewController: UIViewController, UITableViewDataSource, Cr
         return cell
     }
     
+    // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell: TaskListViewCell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as? TaskListViewCell else {
             return
