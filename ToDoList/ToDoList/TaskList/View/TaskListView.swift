@@ -22,6 +22,8 @@ final class TaskListView: UIView, ViewCode {
     
     lazy var tableView: UITableView = {
         let tableView: UITableView = UITableView (frame: .zero)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 160
         tableView.register(TaskListViewCell.self, forCellReuseIdentifier: "taskCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
