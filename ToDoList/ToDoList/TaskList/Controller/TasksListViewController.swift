@@ -83,23 +83,32 @@ final class TasksListViewController: UIViewController, CreateTaskViewDelegate, T
             return tasks.filter({ $0.isDone }).count
         }
     }
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell: TaskListViewCell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as? TaskListViewCell else {
-                return UITableViewCell()
-            }
-            if indexPath.section == 0 {
-                let undoneTasks: [Task] = tasks.filter({ !$0.isDone })
-                let task: Task = undoneTasks[indexPath.row]
-                cell.setupCell(titleTask: task.title, descriptionTask: task.description, delegate: self, index: indexPath.row, isExpanded: expandedIndexes.contains(indexPath))
-            } else {
-                let doneTasks: [Task] = tasks.filter({ $0.isDone })
-                let taskDone: Task = doneTasks[indexPath.row]
-                cell.setupCell(titleTask: taskDone.title, descriptionTask: taskDone.description, delegate: self, index: indexPath.row, isExpanded: expandedIndexes.contains(indexPath))
-            }
-            cell.isUserInteractionEnabled = true
-            return cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell: TaskListViewCell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as? TaskListViewCell else {
+            return UITableViewCell()
         }
-    
+        if indexPath.section == 0 {
+            let undoneTasks: [Task] = tasks.filter({ !$0.isDone })
+            let task: Task = undoneTasks[indexPath.row]
+            cell.setupCell(titleTask: task.title, descriptionTask: task.description, delegate: self, index: indexPath.row, isExpanded: expandedIndexes.contains(indexPath))
+        } else {
+            let doneTasks: [Task] = tasks.filter({ $0.isDone })
+            let taskDone: Task = doneTasks[indexPath.row]
+            cell.setupCell(titleTask: taskDone.title, descriptionTask: taskDone.description, delegate: self, index: indexPath.row, isExpanded: expandedIndexes.contains(indexPath))
+            cell.taskDoneButton.isHidden = true
+        }
+        cell.isUserInteractionEnabled = true
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.tasks.remove(at: indexPath.row)
+            tableView.reloadData()
+          }
+        }
+        
+    // MARK: - UiTableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if expandedIndexes.contains(indexPath) {
             expandedIndexes.remove(indexPath)
